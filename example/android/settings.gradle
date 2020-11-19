@@ -1,0 +1,6 @@
+rootProject.name = 'WifiLightExample'
+apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
+include ':app'
+
+include ':reactnativewifilight'
+project(':reactnativewifilight').projectDir = new File(rootProject.projectDir, '../../android')
