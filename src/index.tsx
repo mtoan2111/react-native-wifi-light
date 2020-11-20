@@ -1,9 +1,55 @@
-import { NativeModules } from 'react-native';
+import { NativeModules, NativeEventEmitter } from 'react-native';
 
-type WifiLightType = {
-  multiply(a: number, b: number): Promise<number>;
-};
+class Wifi {
+	Wifi: any;
+	nativeEvent: any;
+	onScanResults: any;
+	constructor() {
+		try {
+			this.Wifi = NativeModules.Wifi;
+			this.nativeEvent = new NativeEventEmitter(this.Wifi);
+		} catch {
+			this.Wifi = undefined;
+			this.nativeEvent = undefined;
+		}
+		this.initListener();
+	}
 
-const { WifiLight } = NativeModules;
+	startScan = () => {
+		try {
+			this.Wifi &&
+				typeof this.Wifi !== 'undefined' &&
+				this.Wifi.startScan();
+		} catch (err) {
+			console.log('Wifi-Native-Module/StartScan: err => ', err);
+		}
+	};
 
-export default WifiLight as WifiLightType;
+	getWifiList = () => {
+		try {
+			this.Wifi &&
+				typeof this.Wifi !== 'undefined' &&
+				this.Wifi.getWifiList();
+		} catch (err) {
+			console.log('Wifi-Native-Module/StopScan: err => ', err);
+		}
+	};
+
+	stopScan = () => {
+		try {
+			this.Wifi &&
+				typeof this.Wifi !== 'undefined' &&
+				this.Wifi.stopScan();
+		} catch (err) {
+			console.log('Wifi-Native-Module/StopScan: err => ', err);
+		}
+	};
+
+	initListener = () => {
+		this.nativeEvent.addListener('wifiScanResult', (data) => {
+			this.onScanResults(data);
+		});
+	};
+}
+
+export default new Wifi();
