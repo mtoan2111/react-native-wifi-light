@@ -49,33 +49,33 @@ if (granted === PermissionsAndroid.RESULTS.GRANTED) {
 ```javascript
 import Wifi from "react-native-wifi-light";
 
-    componentDidMount(){
-        PermissionsAndroid.request(
-			PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-			{
-				title: 'Location permission is required for WiFi connections',
-				message:
-					'This app needs location permission as this is required  ' +
-					'to scan for wifi networks.',
-				buttonNegative: 'DENY',
-				buttonPositive: 'ALLOW',
-			},
-		)
-		.then((res) => {
-			if (res === PermissionsAndroid.RESULTS.GRANTED) {
-				Wifi.onScanResults = (mess) => {
-					this.listWifi = JSON.parse(mess.data);
-					console.log(this.listWifi);
-					this.setState({
-						isUpdateView: !this.state.isUpdateView,
-					});
-				};
-				Wifi.getWifiList();
-			} else {
-			}
-		})
-		.catch((err) => {});   
-    }
+componentDidMount(){
+    PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+        {
+            title: 'Location permission is required for WiFi connections',
+            message:
+                'This app needs location permission as this is required  ' +
+                'to scan for wifi networks.',
+            buttonNegative: 'DENY',
+            buttonPositive: 'ALLOW',
+        },
+    )
+    .then((res) => {
+        if (res === PermissionsAndroid.RESULTS.GRANTED) {
+            Wifi.onScanResults = (mess) => {
+                this.listWifi = JSON.parse(mess.data);
+                console.log(this.listWifi);
+                this.setState({
+                    isUpdateView: !this.state.isUpdateView,
+                });
+            };
+            Wifi.getWifiList();
+        } else {
+        }
+    })
+    .catch((err) => {});   
+}
 ```
 
 ## Methods
