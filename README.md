@@ -97,7 +97,7 @@ Similar to `getWifiList` but it forcefully starts a new WiFi scan and only passe
 
 ## Event
 
-### `onScanResult: callback(data: any)`
+### `onScanResults: callback(data: any)`
 
 The event wil be executed when list wifi is ready
 
