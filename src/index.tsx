@@ -46,8 +46,15 @@ class Wifi {
 	};
 
 	initListener = () => {
-		this.nativeEvent.addListener('wifiScanResult', (data) => {
-			this.onScanResults(data);
+		this.nativeEvent.addListener('wifiScanResult', (message = {}) => {
+			try {
+				this.onScanResults(message);
+			} catch (err) {
+				console.log(
+					'Wifi-Native-Module/initListener/wifiScanResult: err => ',
+					err,
+				);
+			}
 		});
 	};
 }
