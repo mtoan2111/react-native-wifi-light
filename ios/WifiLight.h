@@ -1,5 +1,6 @@
 #import <React/RCTBridgeModule.h>
+#import <React/RCTEventEmitter.h>
 
-@interface WifiLight : NSObject <RCTBridgeModule>
+@interface Wifi : RCTEventEmitter <RCTBridgeModule>
 
 @end
