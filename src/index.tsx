@@ -19,7 +19,7 @@ class Wifi {
 		try {
 			this.Wifi &&
 				typeof this.Wifi !== 'undefined' &&
-				this.Wifi.startScan();
+				this.Wifi.startScan?.();
 		} catch (err) {
 			console.log('Wifi-Native-Module/StartScan: err => ', err);
 		}
@@ -29,7 +29,7 @@ class Wifi {
 		try {
 			this.Wifi &&
 				typeof this.Wifi !== 'undefined' &&
-				this.Wifi.getWifiList();
+				this.Wifi.getWifiList?.()?.catch?.();
 		} catch (err) {
 			console.log('Wifi-Native-Module/StopScan: err => ', err);
 		}
@@ -39,16 +39,25 @@ class Wifi {
 		try {
 			this.Wifi &&
 				typeof this.Wifi !== 'undefined' &&
-				this.Wifi.stopScan();
+				this.Wifi.stopScan?.();
 		} catch (err) {
 			console.log('Wifi-Native-Module/StopScan: err => ', err);
 		}
 	};
 
+	openSettings = () => {
+		try {
+			this.Wifi && typeof this.Wifi !== 'undefined' &&
+				this.Wifi.openSettings?.();
+		}
+		catch { }
+	}
+
 	initListener = () => {
+		this.nativeEvent.removeListener('wifiScanResult',)
 		this.nativeEvent.addListener('wifiScanResult', (message = {}) => {
 			try {
-				this.onScanResults(message);
+				this.onScanResults?.(message);
 			} catch (err) {
 				console.log(
 					'Wifi-Native-Module/initListener/wifiScanResult: err => ',
