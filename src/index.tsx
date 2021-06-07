@@ -29,7 +29,7 @@ class Wifi {
 		try {
 			this.Wifi &&
 				typeof this.Wifi !== 'undefined' &&
-				this.Wifi.getWifiList();
+				this.Wifi.getWifiList()?.catch?.();
 		} catch (err) {
 			console.log('Wifi-Native-Module/StopScan: err => ', err);
 		}
@@ -45,7 +45,10 @@ class Wifi {
 		}
 	};
 
+	
+
 	initListener = () => {
+		this.nativeEvent.removerListener('wifiScanResult',)
 		this.nativeEvent.addListener('wifiScanResult', (message = {}) => {
 			try {
 				this.onScanResults(message);
