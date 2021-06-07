@@ -116,4 +116,10 @@ RCT_EXPORT_METHOD(stopScan){
     
 }
 
+RCT_EXPORT_METHOD(stopScan){
+    
+}
+// Example method
+// See // https://facebook.github.io/react-native/docs/native-modules-ios
+
 @end
