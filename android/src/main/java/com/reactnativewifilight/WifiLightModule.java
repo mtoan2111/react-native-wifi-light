@@ -77,7 +77,11 @@ public class WifiLightModule extends ReactContextBaseJavaModule {
         context.getApplicationContext().unregisterReceiver(this._broadcastReceiver);
     }
 
-  private void scanSuccess() {
+    @ReactMethod
+    public void openSettings() {
+    }
+    
+    private void scanSuccess() {
       List<ScanResult> aWifi = _wifiManager.getScanResults();
       WritableMap params = Arguments.createMap();
       JSONArray aWifiSSID = new JSONArray();
@@ -98,7 +102,7 @@ public class WifiLightModule extends ReactContextBaseJavaModule {
       }
       params.putString("data", aWifiSSID.toString());
       sendEvent("wifiScanResult", params);
-  }
+    }
 
     private void sendEvent(String eventName, WritableMap params) {
         this.context.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
