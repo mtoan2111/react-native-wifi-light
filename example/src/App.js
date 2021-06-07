@@ -57,11 +57,12 @@ export default class App extends React.Component {
 
 	onStartScanWifiPress = () => {
 		try {
-			if (Platform.OS === "android") {
-				Wifi.startScan();
-			} else {
-				Linking.openURL("app-settings:")
-			}
+			Wifi.startScan();
+			// if (Platform.OS === "android") {
+			// 	Wifi.startScan();
+			// } else {
+			// 	Linking.openURL("app-settings:")
+			// }
 		} catch { }
 	};
 

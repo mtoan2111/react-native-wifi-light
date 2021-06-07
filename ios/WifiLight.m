@@ -116,9 +116,12 @@ RCT_EXPORT_METHOD(stopScan){
     
 }
 
-RCT_EXPORT_METHOD(stopScan){
-    
+RCT_EXPORT_METHOD(openSettings){
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"app-settings:root=WIFI"]];
+    });
 }
+
 // Example method
 // See // https://facebook.github.io/react-native/docs/native-modules-ios
 
