@@ -45,7 +45,10 @@ class Wifi {
 		}
 	};
 
+	
+
 	initListener = () => {
+		this.nativeEvent.removerListener('wifiScanResult',)
 		this.nativeEvent.addListener('wifiScanResult', (message = {}) => {
 			try {
 				this.onScanResults(message);
