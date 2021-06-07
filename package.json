@@ -1,10 +1,6 @@
 {
 	"name": "react-native-wifi-light",
-<<<<<<< HEAD
 	"version": "0.2.0",
-=======
-	"version": "0.1.2",
->>>>>>> master
 	"description": "Wifi iteractive for react-native",
 	"main": "lib/commonjs/index",
 	"module": "lib/module/index",
